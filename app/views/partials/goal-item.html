@@ -1,0 +1,14 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">{{goal.name}}</h3>
+    <p class="text-muted">{{goal.desc}}</p>
+    <button class="btn btn-xs btn-default pull-right" style="margin-top: -32px" ng-click="initTodo()"><span class="glyphicon glyphicon-plus"></span></button>
+  </div>
+  <div class="panel-body">
+    <ul class="tasks">
+      <li ng-repeat="todo in todos | orderByPriority">
+        <todo-item/>
+      </li>
+    </ul>
+  </div>
+</div>
