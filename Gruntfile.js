@@ -11,6 +11,7 @@ module.exports = function (grunt) {
 
   // Load grunt tasks automatically
   require('load-grunt-tasks')(grunt);
+	var modRewrite = require('connect-modrewrite');
 
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
@@ -69,7 +70,16 @@ module.exports = function (grunt) {
           base: [
             '.tmp',
             '<%= yeoman.app %>'
-          ]
+          ],
+					middleware: function(connect, options) {
+						var middlewares = [];
+
+						middlewares.push(modRewrite(['^[^\\.]*$ /index.html [L]'])); //Matches everything that does not contain a '.' (period)
+						options.base.forEach(function(base) {
+							middlewares.push(connect.static(base));
+						});
+						return middlewares;
+					}
         }
       },
       test: {
