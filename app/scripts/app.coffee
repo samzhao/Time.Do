@@ -6,9 +6,11 @@ app = angular.module('timedoApp', [
   'ngAnimate'
   'ui.router'
   'firebase'
+  'goangular'
 ])
 
-app.config(($stateProvider, $urlRouterProvider, $locationProvider) ->
+app.config(($goConnectionProvider, $stateProvider, $urlRouterProvider, $locationProvider) ->
+  $goConnectionProvider.$set('https://goinstant.net/873fafb75e50/Time.Do')
   $locationProvider.html5Mode(false)
   $urlRouterProvider.otherwise("/")
   $stateProvider
