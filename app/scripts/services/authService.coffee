@@ -2,8 +2,9 @@
 
 angular.module('timedoApp')
   .factory 'authService', ($firebase, $firebaseSimpleLogin, $state) ->
-    dataRef = new Firebase("https://burning-fire-6153.firebaseio.com/")
-    loginObj = $firebaseSimpleLogin(dataRef);
+
+    dataRef = new Firebase("https://timedo.firebaseio.com/")
+    loginObj = $firebaseSimpleLogin(dataRef)
 
     returnObj = {}
     returnObj.register = (email, password) ->

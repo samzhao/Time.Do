@@ -2,10 +2,8 @@
 
 angular.module('timedoApp')
   .factory 'goalService', ($firebase) ->
-    # Service logic
-    # ...
 
-    goalsRef = new Firebase("https://burning-fire-6153.firebaseio.com/goals")
+    goalsRef = new Firebase("https://timedo.firebaseio.com/goals")
     goals = $firebase(goalsRef)
 
     # Public API here

@@ -6,11 +6,9 @@ app = angular.module('timedoApp', [
   'ngAnimate'
   'ui.router'
   'firebase'
-  'goangular'
 ])
 
-app.config(($goConnectionProvider, $stateProvider, $urlRouterProvider, $locationProvider) ->
-  $goConnectionProvider.$set('https://goinstant.net/873fafb75e50/Time.Do')
+app.config(($stateProvider, $urlRouterProvider, $locationProvider) ->
   $locationProvider.html5Mode(false)
   $urlRouterProvider.otherwise("/")
   $stateProvider
@@ -22,6 +20,7 @@ app.config(($goConnectionProvider, $stateProvider, $urlRouterProvider, $location
       templateUrl: 'views/login.html'
       controller: "LoginCtrl"
 ).run ($rootScope, $state, $stateParams, authService) ->
+  $rootScope.remoteUrl = "http://asdf.com"
   $rootScope.$watch ->
     authService.isLoggedIn()
   , (newValue, oldValue) ->
