@@ -2,16 +2,23 @@
   "name": "timedo",
   "version": "0.0.0",
   "dependencies": {
-    "angular": "1.2.6",
+    "angular": "1.2.13",
     "json3": "~3.2.6",
     "es5-shim": "~2.1.0",
     "jquery": "~1.10.2",
     "sass-bootstrap": "~3.0.2",
-    "angular-cookies": "1.2.6",
-    "angular-sanitize": "1.2.6"
+    "angular-cookies": "1.2.13",
+    "angular-sanitize": "1.2.13",
+    "angular-animate": "~1.2.13",
+    "angularfire": "~0.6.0",
+    "moment": "~2.5.1",
+    "angular-ui-router": "bower-workaround"
   },
   "devDependencies": {
-    "angular-mocks": "1.2.6",
-    "angular-scenario": "1.2.6"
+    "angular-mocks": "1.2.13",
+    "angular-scenario": "1.2.13"
+  },
+  "resolutions": {
+    "angular-ui-router": "0.2.8-bowratic-tedium"
   }
 }

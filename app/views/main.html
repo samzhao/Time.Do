@@ -1,36 +1,50 @@
-<div class="header">
-  <ul class="nav nav-pills pull-right">
-    <li class="active"><a ng-href="#">Home</a></li>
-    <li><a ng-href="#">About</a></li>
-    <li><a ng-href="#">Contact</a></li>
-  </ul>
-  <h3 class="text-muted">Time Do</h3>
-</div>
+<div class="row">
+  <button class="btn btn-xs btn-default pull-right logout" ng-click="logout()">logout</button>
+  <div class="col-lg-12">
+    <div class="input-group">
+      <h3>New Goal</h3>
+      <form ng-submit="addGoal()" class="goal-form form-inline form-horizontal" role="form">
+        <div class="form-group">
+          <label for="goal-input" class="col-sm-2 sr-only">Goal</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" ng-model="newGoal.name" id="goal-input" placeholder="Goal">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="goal-desc" class="col-sm-2 sr-only">Desc</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" ng-model="newGoal.desc" id="goal-desc" placeholder="Goal Description">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-sm btn-default">Add Goal</button>
+      </form>
 
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#">Splendid!</a></p>
-</div>
-
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
-
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
-
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
-</div>
-
-<div class="footer">
-  <p>♥ from the Yeoman team</p>
+      <form ng-submit="addTodo()" class="todo-form form-inline form-horizontal" role="form">
+        <div class="form-group">
+          <label for="todo-input" class="col-sm-2 sr-only">Task</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" ng-model="newTodo.name" placeholder="Task" id="todo-input">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="time-input" class="col-sm-2 sr-only">Time</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" ng-model="newTodo.totalTime" placeholder="time in seconds" id="time-input">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-sm btn-default">Add Task</button>
+      </form>
+    </div>
+  </div>
+  <div class="col-lg-12 main">
+    <ul class="goals">
+      <li ng-repeat="goal in goals">
+        <goal-item/>
+      </li>
+    </ul>
+  </div>
+<!--   <h3>Timer 2: <timer autostart="false" interval="1000">{{hours}}:{{minutes}}:{{seconds}}</timer></h3>
+  <h3>Timer 3: <timer autostart="false" interval="1000" countdown="10">{{seconds}}</timer></h3>
+  <button ng-click="startTimer()" ng-disabled="timerRunning">Start Timers</button>
+  <button ng-click="stopTimer()" ng-disabled="!timerRunning">Stop Timers</button> -->
 </div>
