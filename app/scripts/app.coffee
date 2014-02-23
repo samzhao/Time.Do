@@ -6,7 +6,7 @@ app = angular.module('timedoApp', [
   'ngAnimate'
   'ui.router'
   'firebase'
-])
+]).constant("remoteUrl", "https://timedo.firebaseio.com")
 
 app.config(($stateProvider, $urlRouterProvider, $locationProvider) ->
   $locationProvider.html5Mode(false)
@@ -20,7 +20,6 @@ app.config(($stateProvider, $urlRouterProvider, $locationProvider) ->
       templateUrl: 'views/login.html'
       controller: "LoginCtrl"
 ).run ($rootScope, $state, $stateParams, authService) ->
-  $rootScope.remoteUrl = "http://asdf.com"
   $rootScope.$watch ->
     authService.isLoggedIn()
   , (newValue, oldValue) ->

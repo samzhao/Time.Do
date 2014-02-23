@@ -1,9 +1,9 @@
 'use strict'
 
 angular.module('timedoApp')
-  .factory 'todoService', ($firebase) ->
+  .factory 'todoService', ($firebase, remoteUrl) ->
 
-    todosRef = new Firebase("https://timedo.firebaseio.com/todos")
+    todosRef = new Firebase("#{remoteUrl}/todos")
     todos = $firebase(todosRef)
 
     # Public API here

@@ -1,9 +1,9 @@
 'use strict'
 
 angular.module('timedoApp')
-  .factory 'authService', ($firebase, $firebaseSimpleLogin, $state) ->
+  .factory 'authService', ($firebase, $firebaseSimpleLogin, $state, remoteUrl) ->
 
-    dataRef = new Firebase("https://timedo.firebaseio.com/")
+    dataRef = new Firebase(remoteUrl)
     loginObj = $firebaseSimpleLogin(dataRef)
 
     returnObj = {}
