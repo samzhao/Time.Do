@@ -21,7 +21,7 @@ angular.module('timedoApp')
         todo.elapsedTime = $scope.elapsedTime
         # todoService.saveTodo(todoIndex)
 
-        $scope.$emit("timer-ticking", {todoIndex: todoIndex});
+        $scope.$emit("timer-ticking", {todoIndex: todoIndex})
         counter = $timeout(countUp, 1000)
 
       $scope.start = () ->
@@ -31,15 +31,14 @@ angular.module('timedoApp')
           todo.timerRunning = true
           todo.state = "Started"
           todo.status = "In Progress"
-          todoService.saveTodo(todoIndex)
+          $scope.$emit("timer-started", {todoIndex: todoIndex})
       $scope.pause = () ->
         if $scope.counting
-          $scope.$emit("timer-stopped", {todoIndex: todoIndex});
           $timeout.cancel(counter)
           $scope.counting = false
           todo.timerRunning = false
           todo.state = "Paused"
-          todoService.saveTodo(todoIndex)
+          $scope.$emit("timer-stopped", {todoIndex: todoIndex})
       $scope.stop = () ->
         timeInMs = 0;
         todo.elapsedTime = moment(timeInMs).seconds()
@@ -47,7 +46,7 @@ angular.module('timedoApp')
         $scope.counting = false
         todo.timerRunning = false
         todo.state = "Stopped"
-        todoService.saveTodo(todoIndex)
+        $scope.$emit("timer-stopped", {todoIndex: todoIndex})
 
       $scope.progressClass = "progress-bar-info"
       # $scope.timerCtrlText = "Start"
@@ -77,6 +76,11 @@ angular.module('timedoApp')
             $scope.pause()
           else
             $scope.start()
+
+      $scope.$on "timer-started", (event, data) ->
+        todo = $scope.todos[data.todoIndex]
+        todo.elapsedTime = $scope.elapsedTime
+        todoService.saveTodo(todoIndex)
 
       $scope.$on "timer-stopped", (event, data) ->
         todo = $scope.todos[data.todoIndex]
