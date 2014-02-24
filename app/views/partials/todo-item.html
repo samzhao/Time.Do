@@ -7,6 +7,6 @@
 
 <div class="elapsedTime" ng-class="progressClass" style="width: {{elapsedTime/totalTime*100}}%"></div>
 <div class="timerCtrls">
-    <button class="btn btn-xs btn-primary" ng-click="ctrlTimer()"><span class="glyphicon" ng-class="{'glyphicon-play': !todo.timerRunning, 'glyphicon-pause': todo.timerRunning}"></span></button>
+    <button class="btn btn-xs btn-primary" ng-click="start()"><span class="glyphicon" ng-class="{'glyphicon-play': !todo.timerRunning, 'glyphicon-pause': todo.timerRunning}"></span></button>
     <button class="btn btn-xs btn-danger" ng-click="stop()"><span class="glyphicon glyphicon-stop"></span></button>
 </div>

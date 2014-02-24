@@ -9,24 +9,25 @@ angular.module('timedoApp')
     $scope.todos = todoService.getTodos()
     $scope.goals = goalService.getGoals()
 
-    $scope.todoList = []
-    $scope.todos.$on "loaded", (data) ->
-      for key of data
-        $scope.todoList.push data[key]
     $scope.newTodo = {}
     $scope.newGoal = {}
 
-    $scope.addTodo = (goalIndex)->
+    $scope.addTodo = (goal, index)->
       additionalParams = {
         timerRunning: false,
         totalTime: parseInt($scope.newTodo.totalTime, 10) || 0,
         elapsedTime: 0,
+        startTime: new Date(),
+        endTime: null,
         state: "Stopped",
         status: 'New',
         $priority: $scope.todos.$getIndex().length+1
       }
       props = $.extend({}, $scope.newTodo, additionalParams)
-      $scope.goals[goalIndex].$add({todo: props})
+      goalIndex = $scope.goals.$getIndex()[index]
+      $scope.goals[goalIndex].todos = []
+      $scope.goals[goalIndex].todos.push(props)
+      $scope.goals.$save(goalIndex)
       $scope.newTodo = {}
 
     $scope.addGoal = ->
